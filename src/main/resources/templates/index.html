@@ -1,52 +1,106 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    .crop{
+      width: 400px;
+      height: 280px;
+      overflow: hidden;
+    }
+    .crop img{
+      width: 400px;
+      height: 300px;
+      margin: 0 0 -300px 0px;
+    }
+    /*body { background-image:url('images/starry-dusk.gif'); background-repeat:repeat; }*/
 
-  <link rel="stylesheet" type="text/css"
-        th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+  </style>
 
-  <title>Registration</title>
+
+  <link rel="stylesheet" href="../css/index.css" />
+
+
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Index</title>
 </head>
-<body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed"
-              data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-              aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span> <span
-              class="icon-bar"></span> <span class="icon-bar"></span> <span
-              class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#" th:href="@{/}">Registration and
-        Login Module</a>
-    </div>
-    <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<body Style="background-color:#827055"; >
+<p>This is great</p>
+<!--<div class="menu-container">-->
+<!--  <div class="menu">-->
+<!--    <div class='logo'><img src="https://www.tagsmaker.com/upload/www.tagsmaker.com_n70ku.png"-->
+<!--                           width="200"-->
+<!--                           height="200"/></div>-->
+<!--    <div class="links">-->
+<!--      <nav>-->
+<!--        <a href="index.html"><p>Home</p></a>-->
+<!--        <a href="login.html"><p>Login</p></a>-->
+<!--        <a href="register.html"><p>Registration</p></a>-->
+<!--      </nav>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class='header-container'>-->
+<!--  <div class='header'>-->
+<!--    <div class='subscribe'>Subscribe &#9662;</div>-->
 
-<br>
-<br>
-<div class="container">
-  <h2>User Registration and Login Module using Spring Boot, Spring
-    MVC, Spring Security, JPA/Hibernate and Thymeleaf</h2>
+<!--    <div class='social'><img src="../images/2959740_bird_news_tweet_twitter_icon.png"/>-->
+<!--      <img src="../images/2959749_facebook_icon.png"/>-->
+<!--      <img src="../images/3463479_media_network_snapchat_social_icon.png"/>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class='photo-grid-container'>-->
+<!--  <div class='photo-grid'>-->
+<!--    <div class='photo-grid-item first-item'>-->
+<!--      <img src='https://media.istockphoto.com/photos/smiling-young-woman-at-the-downtown-district-picture-id1183749585?k=20&m=1183749585&s=612x612&w=0&h=MUMYoEtf0AN5_GRburnhoDz3x_sIQX7qilQ4Ypf8d3A=' width: 300px;-->
+<!--           height: 300px; Style = flex:3; />-->
+<!--    </div>-->
+<!--    <div class='photo-grid-item'>-->
+<!--      <img src='https://media.istockphoto.com/photos/beauty-multi-ethnic-group-of-womans-with-diffrent-types-of-skin-and-picture-id1193184392?k=20&m=1193184392&s=612x612&w=0&h=w4LaERM10JnU7yg_R-N8oW9oDOY7OT8CqYmvkzpiEJg=' width: 300px;-->
+<!--           height: 300px;/>-->
+<!--    </div>-->
+<!--    <div class='photo-grid-item'>-->
+<!--      <img src='https://images.pexels.com/photos/1635596/pexels-photo-1635596.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' width: 300px;-->
+<!--           height: 300px;/>-->
+<!--    </div>-->
+<!--    <div class='photo-grid-item'>-->
+<!--      <img src='https://media.istockphoto.com/photos/summers-here-have-a-ball-picture-id1183287462?k=20&m=1183287462&s=612x612&w=0&h=Ke61kuPQ657oucD9T33Ax3BU6tScxj3qhtSYtZhmwEg=' width: 300px;-->
+<!--           height: 300px;Style = flex:3/>-->
+<!--    </div>-->
+<!--    <div class='photo-grid-item last-item'>-->
+<!--      <div class="crop">-->
+<!--        <img src='https://image.shutterstock.com/image-photo/pretty-african-american-girl-reading-260nw-682208722.jpg'width: 300px;-->
+<!--             height: 300px;/>-->
+<!--      </div>-->
+<!--    </div>-->
 
-  <p>
-    Welcome <span sec:authentication="principal.username">User</span>
-  </p>
-</div>
+<!--  </div>-->
+<!--</div>-->
+<!--<div>-->
+<!--  <div class="body-grid-container">-->
+<!--    <div class="body-grid">-->
+<!--      <div class="body-grid-item">-->
+<!--        <p> <h3>At Seltzer, we believe that life is best when you are enjoying the casual adventure.-->
+<!--        The most essential clothing is usually where you need the most comfort. Seltzer is at the center of both fashion and comfort.-->
+<!--        With our in house Sun-Printing and patent pending Ultra Comfy technology we are equipping our believers with the tools to take on the worst of everyday.-->
+<!--        You'll never look at essentials the same.</h3>   </p>-->
 
-<script type="text/javascript"
-        th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
-<script type="text/javascript"
-        th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
-</body>
-</html>
+
+<!--      </div>-->
+
+
+<!--    </div>-->
+
+
+<!--  </div>-->
+
+
+
+<!--</div>-->
+
+<!--&lt;!&ndash;<script src="app.js"></script>&ndash;&gt;-->
+<!--</body>-->
