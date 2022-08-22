@@ -9,7 +9,7 @@ public class ControllerHelper {
     @Autowired
     private UserService userService;
 
-    public User getAuthenticatedCustomer(HttpServletRequest request) {
+    public User getAuthenticatedUser(HttpServletRequest request) {
         // String email = request.getQueryString(); //email
         String email = "abcd@gmail.com";
         return userService.findByEmail(email);

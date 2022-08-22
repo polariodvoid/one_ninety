@@ -7,9 +7,9 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class IdBasedEntity {
-@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-protected Integer id;
+    protected Integer id;
 
     public Integer getId() {
         return id;

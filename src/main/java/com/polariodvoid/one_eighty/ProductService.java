@@ -8,25 +8,24 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
-import com.polariodvoid.one_eighty.Product;
-import com.polariodvoid.one_eighty.Exceptions.ProductNotFoundException;
+
 @Service
 
 public class ProductService {
     public static final int PRODUCTS_PER_PAGE = 10;
     public static final int SEARCH_RESULTS_PER_PAGE = 10;
 
-    @Autowired private ProductRepository repo;
+    @Autowired private ProductRepository productRepository;
 
     public Page<Product> listByCategory(int pageNum, Integer categoryId) {
         String categoryIdMatch = "-" + String.valueOf(categoryId) + "-";
         Pageable pageable = PageRequest.of(pageNum - 1, PRODUCTS_PER_PAGE);
 
-        return repo.listByCategory(categoryId, categoryIdMatch, pageable);
+        return productRepository.listByCategory(categoryId, categoryIdMatch, pageable);
     }
 
     public Product getProduct(String alias) throws ProductNotFoundException {
-        Product product = repo.findByAlias(alias);
+        Product product = productRepository.findByAlias(alias);
         if (product == null) {
             throw new ProductNotFoundException("Could not find any product with alias " + alias);
         }
@@ -35,17 +34,16 @@ public class ProductService {
     }
 
     public Product getProduct(Integer id) throws ProductNotFoundException {
-        try {
-            Product product = repo.findById(id).get();
-            return product;
-        } catch (NoSuchElementException ex) {
+        Product product = productRepository.findById(id);
+        if (product == null){
             throw new ProductNotFoundException("Could not find any product with ID " + id);
         }
+        return product;
     }
 
     public Page<Product> search(String keyword, int pageNum) {
         Pageable pageable = PageRequest.of(pageNum - 1, SEARCH_RESULTS_PER_PAGE);
-        return repo.search(keyword, pageable);
+        return productRepository.search(keyword, pageable);
 
     }
 }

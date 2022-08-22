@@ -1,5 +1,6 @@
 package com.polariodvoid.one_eighty;
 
+import com.polariodvoid.one_eighty.Exceptions.UserNotFoundException;
 import org.aspectj.apache.bcel.classfile.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,18 +13,20 @@ import javax.servlet.http.HttpServletRequest;
 public class ShoppingCartRestController {
     @Autowired
     private ShoppingCartService cartService;
-    @Autowired private UserService customerService;
+    @Autowired private UserService userService;
+
+
 
     @PostMapping("/cart/add/{productId}/{quantity}")
     public String addProductToCart(@PathVariable("productId") Integer productId,
                                    @PathVariable("quantity") Integer quantity, HttpServletRequest request) {
 
         try {
-            Customer customer = getAuthenticatedCustomer(request);
-            Integer updatedQuantity = cartService.addProduct(productId, quantity, customer);
+            User user = getAuthenticatedUser(request);
+            Integer updatedQuantity = cartService.addProduct(productId, quantity, user);
 
             return updatedQuantity + " item(s) of this product were added to your shopping cart.";
-        } catch (CustomerNotFoundException ex) {
+        } catch (UserNotFoundException ex) {
             return "You must login to add this product to cart.";
         } catch (ShoppingCartException ex) {
             return ex.getMessage();
@@ -31,25 +34,22 @@ public class ShoppingCartRestController {
 
     }
 
-    private Customer getAuthenticatedCustomer(HttpServletRequest request)
-            throws CustomerNotFoundException {
-        String email = Utility.getEmailOfAuthenticatedCustomer(request);
-        if (email == null) {
-            throw new CustomerNotFoundException("No authenticated customer");
-        }
-// wait
-        return UserService.findByEmail(email);
+    private User getAuthenticatedUser(HttpServletRequest request)
+            throws UserNotFoundException {
+        // String email = request.getQueryString(); //email
+        String email = "abcd@gmail.com";
+        return userService.findByEmail(email);
     }
 
     @PostMapping("/cart/update/{productId}/{quantity}")
     public String updateQuantity(@PathVariable("productId") Integer productId,
                                  @PathVariable("quantity") Integer quantity, HttpServletRequest request) {
         try {
-            Customer customer = getAuthenticatedCustomer(request);
+            User customer = getAuthenticatedUser(request);
             float subtotal = cartService.updateQuantity(productId, quantity, customer);
 
             return String.valueOf(subtotal);
-        } catch (CustomerNotFoundException ex) {
+        } catch (UserNotFoundException ex) {
             return "You must login to change quantity of product.";
         }
     }
@@ -58,12 +58,12 @@ public class ShoppingCartRestController {
     public String removeProduct(@PathVariable("productId") Integer productId,
                                 HttpServletRequest request) {
         try {
-            Customer customer = getAuthenticatedCustomer(request);
-            cartService.removeProduct(productId, customer);
+            User user = getAuthenticatedUser(request);
+            cartService.removeProduct(productId, user);
 
             return "The product has been removed from your shopping cart.";
 
-        } catch (CustomerNotFoundException e) {
+        } catch (UserNotFoundException e) {
             return "You must login to remove product.";
         }
     }
