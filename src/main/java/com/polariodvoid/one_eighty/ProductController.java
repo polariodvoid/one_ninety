@@ -66,19 +66,19 @@ public class ProductController {
 
         try {
             Product product = productService.getProduct(alias);
-            List<Category> listCategoryParents = categoryService.getCategoryParents(product.getCategory());
-            Page<Review> listReviews = reviewService.list3MostVotedReviewsByProduct(product);
+           // List<Category> listCategoryParents = categoryService.getCategoryParents(product.getCategory());
+            // Page<Review> listReviews = reviewService.list3MostVotedReviewsByProduct(product);
 
-            Customer customer = controllerHelper.getAuthenticatedCustomer(request);
+            User user = controllerHelper.getAuthenticatedCustomer(request);
 
-            if (customer != null) {
-                boolean customerReviewed = reviewService.didCustomerReviewProduct(customer, product.getId());
-                voteService.markReviewsVotedForProductByCustomer(listReviews.getContent(), product.getId(), customer.getId());
+            if (user != null) {
+                boolean customerReviewed = reviewService.didCustomerReviewProduct(user, product.getId());
+                voteService.markReviewsVotedForProductByCustomer(listReviews.getContent(), product.getId(), user.getId());
 
                 if (customerReviewed) {
                     model.addAttribute("customerReviewed", customerReviewed);
                 } else {
-                    boolean customerCanReview = reviewService.canCustomerReviewProduct(customer, product.getId());
+                    boolean customerCanReview = reviewService.canCustomerReviewProduct(user, product.getId());
                     model.addAttribute("customerCanReview", customerCanReview);
                 }
             }

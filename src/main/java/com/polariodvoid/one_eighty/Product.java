@@ -39,10 +39,11 @@ public class Product extends IdBasedEntity {
     @Column(name = "main_image", nullable = false)
     private String mainImage;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+    //@ManyToOne
+    //@JoinColumn(name = "category_id")
 
+    private String category;
+//field now its a not a refrence anymore but a string
 
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
