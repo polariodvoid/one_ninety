@@ -16,83 +16,83 @@ import java.util.List;
 public class ProductController {
     @Autowired
     private ProductService productService;
-    @Autowired private CategoryService categoryService;
+//    @Autowired private CategoryService categoryService;
 
     @Autowired private ControllerHelper controllerHelper;
 
-    @GetMapping("/c/{category_alias}")
-    public String viewCategoryFirstPage(@PathVariable("category_alias") String alias,
-                                        Model model) {
-        return viewCategoryByPage(alias, 1, model);
-    }
+//    @GetMapping("/c/{category_alias}")
+//    public String viewCategoryFirstPage(@PathVariable("category_alias") String alias,
+//                                        Model model) {
+//        return viewCategoryByPage(alias, 1, model);
+//    }
 
-    @GetMapping("/c/{category_alias}/page/{pageNum}")
-    public String viewCategoryByPage(@PathVariable("category_alias") String alias,
-                                     @PathVariable("pageNum") int pageNum,
-                                     Model model) {
-        try {
-            Category category = categoryService.getCategory(alias);
-            List<Category> listCategoryParents = categoryService.getCategoryParents(category);
+//    @GetMapping("/c/{category_alias}/page/{pageNum}")
+//    public String viewCategoryByPage(@PathVariable("category_alias") String alias,
+//                                     @PathVariable("pageNum") int pageNum,
+//                                     Model model) {
+//        try {
+//            Category category = categoryService.getCategory(alias);
+//            List<Category> listCategoryParents = categoryService.getCategoryParents(category);
+//
+//            Page<Product> pageProducts = productService.listByCategory(pageNum, category.getId());
+//            List<Product> listProducts = pageProducts.getContent();
+//
+//            long startCount = (pageNum - 1) * ProductService.PRODUCTS_PER_PAGE + 1;
+//            long endCount = startCount + ProductService.PRODUCTS_PER_PAGE - 1;
+//            if (endCount > pageProducts.getTotalElements()) {
+//                endCount = pageProducts.getTotalElements();
+//            }
+//
+//
+//            model.addAttribute("currentPage", pageNum);
+//            model.addAttribute("totalPages", pageProducts.getTotalPages());
+//            model.addAttribute("startCount", startCount);
+//            model.addAttribute("endCount", endCount);
+//            model.addAttribute("totalItems", pageProducts.getTotalElements());
+//            model.addAttribute("pageTitle", category.getName());
+//            model.addAttribute("listCategoryParents", listCategoryParents);
+//            model.addAttribute("listProducts", listProducts);
+//            model.addAttribute("category", category);
+//
+//            return "product/products_by_category";
+//        } catch (CategoryNotFoundException ex) {
+//            return "error/404";
+//        }
+//    }
 
-            Page<Product> pageProducts = productService.listByCategory(pageNum, category.getId());
-            List<Product> listProducts = pageProducts.getContent();
-
-            long startCount = (pageNum - 1) * ProductService.PRODUCTS_PER_PAGE + 1;
-            long endCount = startCount + ProductService.PRODUCTS_PER_PAGE - 1;
-            if (endCount > pageProducts.getTotalElements()) {
-                endCount = pageProducts.getTotalElements();
-            }
-
-
-            model.addAttribute("currentPage", pageNum);
-            model.addAttribute("totalPages", pageProducts.getTotalPages());
-            model.addAttribute("startCount", startCount);
-            model.addAttribute("endCount", endCount);
-            model.addAttribute("totalItems", pageProducts.getTotalElements());
-            model.addAttribute("pageTitle", category.getName());
-            model.addAttribute("listCategoryParents", listCategoryParents);
-            model.addAttribute("listProducts", listProducts);
-            model.addAttribute("category", category);
-
-            return "product/products_by_category";
-        } catch (CategoryNotFoundException ex) {
-            return "error/404";
-        }
-    }
-
-    @GetMapping("/p/{product_alias}")
-    public String viewProductDetail(@PathVariable("product_alias") String alias, Model model,
-                                    HttpServletRequest request) {
-
-        try {
-            Product product = productService.getProduct(alias);
-           // List<Category> listCategoryParents = categoryService.getCategoryParents(product.getCategory());
-            // Page<Review> listReviews = reviewService.list3MostVotedReviewsByProduct(product);
-
-            User user = controllerHelper.getAuthenticatedCustomer(request);
-
-            if (user != null) {
-                boolean customerReviewed = reviewService.didCustomerReviewProduct(user, product.getId());
-                voteService.markReviewsVotedForProductByCustomer(listReviews.getContent(), product.getId(), user.getId());
-
-                if (customerReviewed) {
-                    model.addAttribute("customerReviewed", customerReviewed);
-                } else {
-                    boolean customerCanReview = reviewService.canCustomerReviewProduct(user, product.getId());
-                    model.addAttribute("customerCanReview", customerCanReview);
-                }
-            }
-
-            model.addAttribute("listCategoryParents", listCategoryParents);
-            model.addAttribute("product", product);
-            model.addAttribute("listReviews", listReviews);
-            model.addAttribute("pageTitle", product.getShortName());
-
-            return "product/product_detail";
-        } catch (ProductNotFoundException e) {
-            return "error/404";
-        }
-    }
+//    @GetMapping("/p/{product_alias}")
+//    public String viewProductDetail(@PathVariable("product_alias") String alias, Model model,
+//                                    HttpServletRequest request) {
+//
+//        try {
+//            Product product = productService.getProduct(alias);
+////            List<Category> listCategoryParents = categoryService.getCategoryParents(product.getCategory());
+////             Page<Review> listReviews = reviewService.list3MostVotedReviewsByProduct(product);
+//
+//            User user = controllerHelper.getAuthenticatedCustomer(request);
+//
+//            if (user != null) {
+//                boolean customerReviewed = reviewService.didCustomerReviewProduct(user, product.getId());
+//                voteService.markReviewsVotedForProductByCustomer(listReviews.getContent(), product.getId(), user.getId());
+//
+//                if (customerReviewed) {
+//                    model.addAttribute("customerReviewed", customerReviewed);
+//                } else {
+//                    boolean customerCanReview = reviewService.canCustomerReviewProduct(user, product.getId());
+//                    model.addAttribute("customerCanReview", customerCanReview);
+//                }
+//            }
+//
+//            model.addAttribute("listCategoryParents", listCategoryParents);
+//            model.addAttribute("product", product);
+//            model.addAttribute("listReviews", listReviews);
+//            model.addAttribute("pageTitle", product.getShortName());
+//
+//            return "product/product_detail";
+//        } catch (ProductNotFoundException e) {
+//            return "error/404";
+//        }
+//    }
 
     @GetMapping("/search")
     public String searchFirstPage(String keyword, Model model) {

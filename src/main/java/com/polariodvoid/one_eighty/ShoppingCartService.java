@@ -37,22 +37,22 @@ public class ShoppingCartService {
         return updatedQuantity;
     }
 
-    public List<CartItem> listCartItems(Customer customer) {
+    public List<CartItem> listCartItems(User user) {
         return cartRepo.findByUser(user);
     }
 
-    public float updateQuantity(Integer productId, Integer quantity, Customer customer) {
-        cartRepo.updateQuantity(quantity, customer.getId(), productId);
-        Product product = productRepo.findById(productId).get();
+    public float updateQuantity(Integer productId, Integer quantity, User user) {
+        cartRepo.updateQuantity(quantity, user.getId(), productId);
+        Product product = productRepo.findById(productId);
         float subtotal = product.getDiscountPrice() * quantity;
         return subtotal;
     }
 
-    public void removeProduct(Integer productId, Customer customer) {
-        cartRepo.deleteByCustomerAndProduct(customer.getId(), productId);
+    public void removeProduct(Integer productId, User user) {
+        cartRepo.deleteByCustomerAndProduct(user.getId(), productId);
     }
 
-    public void deleteByCustomer(Customer customer) {
-        cartRepo.deleteByCustomer(customer.getId());
+    public void deleteByUser(User user) {
+        cartRepo.deleteByCustomer(user.getId());
     }
 }

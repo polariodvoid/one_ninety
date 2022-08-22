@@ -17,8 +17,6 @@ public class Product extends IdBasedEntity {
     @Column(length = 4096, nullable = false, name = "full_description")
     private String fullDescription;
 
-
-
     private boolean enabled;
 
     @Column(name = "in_stock")
@@ -31,28 +29,17 @@ public class Product extends IdBasedEntity {
     @Column(name = "discount_percent")
     private float discountPercent;
 
-    private float length;
-    private float width;
-    private float height;
-    private float weight;
-
     @Column(name = "main_image", nullable = false)
     private String mainImage;
 
-    //@ManyToOne
-    //@JoinColumn(name = "category_id")
-
+    // field now its a not a reference anymore but a string
     private String category;
-//field now its a not a refrence anymore but a string
-
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ProductImage> images = new HashSet<>();
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductDetail> details = new ArrayList<>();
-
-
 
 
     public Product(Integer id) {
@@ -98,22 +85,6 @@ public class Product extends IdBasedEntity {
         this.fullDescription = fullDescription;
     }
 
-    public Date getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(Date createdTime) {
-        this.createdTime = createdTime;
-    }
-
-    public Date getUpdatedTime() {
-        return updatedTime;
-    }
-
-    public void setUpdatedTime(Date updatedTime) {
-        this.updatedTime = updatedTime;
-    }
-
     public boolean isEnabled() {
         return enabled;
     }
@@ -154,46 +125,13 @@ public class Product extends IdBasedEntity {
         this.discountPercent = discountPercent;
     }
 
-    public float getLength() {
-        return length;
-    }
-
-    public void setLength(float length) {
-        this.length = length;
-    }
-
-    public float getWidth() {
-        return width;
-    }
-
-    public void setWidth(float width) {
-        this.width = width;
-    }
-
-    public float getHeight() {
-        return height;
-    }
-
-    public void setHeight(float height) {
-        this.height = height;
-    }
-
-    public float getWeight() {
-        return weight;
-    }
-
-    public void setWeight(float weight) {
-        this.weight = weight;
-    }
-
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
-
 
     @Override
     public String toString() {
@@ -222,9 +160,7 @@ public class Product extends IdBasedEntity {
 
     @Transient
     public String getMainImagePath() {
-        if (id == null || mainImage == null) return "/images/image-thumbnail.png";
-
-        return Constants.S3_BASE_URI +"/product-images/" + this.id + "/" + this.mainImage;
+        return Constants.LOCAL_BASE_URI + this.mainImage;
     }
 
     public List<ProductDetail> getDetails() {

@@ -1,6 +1,5 @@
 package com.polariodvoid.one_eighty;
 
-import org.apache.tomcat.jni.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,8 +16,8 @@ public class ShoppingCartController {
 
     @GetMapping("/cart")
     public String viewCart(Model model, HttpServletRequest request) {
-        Customer customer = controllerHelper.getAuthenticatedCustomer(request);
-        List<CartItem> cartItems = cartService.listCartItems(customer);
+        User user = controllerHelper.getAuthenticatedUser(request);
+        List<CartItem> cartItems = cartService.listCartItems(user);
 
         float estimatedTotal = 0.0F;
 

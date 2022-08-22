@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "product_images")
-public class ProductImage {
+public class ProductImage extends IdBasedEntity{
     @Column(nullable = false)
     private String name;
 
@@ -45,6 +45,6 @@ public class ProductImage {
 
     @Transient
     public String getImagePath() {
-        return Constants.S3_BASE_URI + "/product-images/" + product.getId() + "/extras/" + this.name;
+        return Constants.LOCAL_BASE_URI + this.name;
     }
 }

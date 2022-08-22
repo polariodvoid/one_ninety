@@ -3,10 +3,7 @@ import javax.persistence.*;
 import java.util.Collection;
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class User extends IdBasedEntity {
 
     private String firstName;
     private String lastName;
@@ -38,14 +35,6 @@ public class User {
         this.email = email;
         this.password = password;
         this.roles = roles;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
