@@ -1,7 +1,7 @@
 package com.polariodvoid.one_eighty;
 
 import javax.persistence.*;
-
+import com.polariodvoid.one_eighty.Product;
 @Entity
 @Table(name = "cart_items")
 public class CartItem extends IdBasedEntity {

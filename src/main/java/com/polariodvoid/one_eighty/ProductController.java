@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import com.polariodvoid.one_eighty.ControllerHelper;
+import com.polariodvoid.one_eighty.User;
+import com.polariodvoid.one_eighty.Product;
+import com.polariodvoid.one_eighty.Exceptions.ProductNotFoundException;
 
 @Controller
 public class ProductController {
