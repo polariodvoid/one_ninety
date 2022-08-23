@@ -2,12 +2,15 @@ package com.polariodvoid.one_eighty;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import com.polariodvoid.one_eighty.Model.Product;
 
 @Repository
-public interface ProductRepository {
+public interface ProductRepository extends CrudRepository<Product,Integer> {
 
     @Query("SELECT p FROM Product p WHERE p.enabled = true "
             + "AND (p.category = ?1 OR p.category LIKE %?2%)"
@@ -16,7 +19,7 @@ public interface ProductRepository {
 
     public Product findByAlias(String alias);
 
-    public Product findById(Integer id);
+    //public Product findById(Integer id);
 
     @Query(value = "SELECT * FROM products WHERE enabled = true AND "
             + "MATCH(name, short_description, full_description) AGAINST (?1)",

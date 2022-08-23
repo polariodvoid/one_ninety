@@ -34,7 +34,7 @@ public class ProductService {
     }
 
     public Product getProduct(Integer id) throws ProductNotFoundException {
-        Product product = productRepository.findById(id);
+        Product product = productRepository.findById(id).get();
         if (product == null){
             throw new ProductNotFoundException("Could not find any product with ID " + id);
         }

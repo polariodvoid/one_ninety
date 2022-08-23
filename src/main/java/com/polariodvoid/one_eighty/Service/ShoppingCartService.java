@@ -5,9 +5,10 @@ import com.polariodvoid.one_eighty.Model.CartItem;
 import com.polariodvoid.one_eighty.Model.Product;
 import com.polariodvoid.one_eighty.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class ShoppingCartService {
     @Autowired
     private CartItemRepository cartRepo;
@@ -47,7 +48,7 @@ public class ShoppingCartService {
 
     public float updateQuantity(Integer productId, Integer quantity, User user) {
         cartRepo.updateQuantity(quantity, user.getId(), productId);
-        Product product = productRepo.findById(productId);
+        Product product = productRepo.findById(productId).get();
         float subtotal = product.getDiscountPrice() * quantity;
         return subtotal;
     }
