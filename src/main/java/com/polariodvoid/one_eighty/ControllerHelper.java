@@ -1,11 +1,12 @@
 package com.polariodvoid.one_eighty;
 
+import com.polariodvoid.one_eighty.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
-import com.polariodvoid.one_eighty.User;
-import com.polariodvoid.one_eighty.UserService;
+
+import com.polariodvoid.one_eighty.Service.UserService;
 @Component
 public class ControllerHelper {
     @Autowired

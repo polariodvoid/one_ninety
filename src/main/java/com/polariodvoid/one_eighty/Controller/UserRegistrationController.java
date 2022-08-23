@@ -1,5 +1,9 @@
-package com.polariodvoid.one_eighty;
+package com.polariodvoid.one_eighty.Controller;
 import javax.validation.Valid;
+
+import com.polariodvoid.one_eighty.Model.User;
+import com.polariodvoid.one_eighty.Service.UserService;
+import com.polariodvoid.one_eighty.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,5 +1,9 @@
-package com.polariodvoid.one_eighty;
+package com.polariodvoid.one_eighty.Service;
 
+import com.polariodvoid.one_eighty.*;
+import com.polariodvoid.one_eighty.Model.CartItem;
+import com.polariodvoid.one_eighty.Model.Product;
+import com.polariodvoid.one_eighty.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

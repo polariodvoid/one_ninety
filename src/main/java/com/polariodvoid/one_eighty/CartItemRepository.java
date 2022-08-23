@@ -1,12 +1,12 @@
 package com.polariodvoid.one_eighty;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.polariodvoid.one_eighty.Model.CartItem;
+import com.polariodvoid.one_eighty.Model.Product;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import com.polariodvoid.one_eighty.CartItem;
-import com.polariodvoid.one_eighty.User;
-import com.polariodvoid.one_eighty.Product;
+import com.polariodvoid.one_eighty.Model.User;
+
 import java.util.List;
 
 public interface CartItemRepository extends CrudRepository<CartItem, Integer> {

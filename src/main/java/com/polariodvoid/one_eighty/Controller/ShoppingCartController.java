@@ -1,5 +1,9 @@
-package com.polariodvoid.one_eighty;
+package com.polariodvoid.one_eighty.Controller;
 
+import com.polariodvoid.one_eighty.ControllerHelper;
+import com.polariodvoid.one_eighty.Model.CartItem;
+import com.polariodvoid.one_eighty.Model.User;
+import com.polariodvoid.one_eighty.Service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

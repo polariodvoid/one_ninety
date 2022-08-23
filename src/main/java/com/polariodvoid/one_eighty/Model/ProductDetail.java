@@ -1,4 +1,7 @@
-package com.polariodvoid.one_eighty;
+package com.polariodvoid.one_eighty.Model;
+
+import com.polariodvoid.one_eighty.IdBasedEntity;
+import com.polariodvoid.one_eighty.Model.Product;
 
 import javax.persistence.*;
 

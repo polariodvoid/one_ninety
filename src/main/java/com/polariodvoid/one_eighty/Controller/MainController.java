@@ -1,4 +1,4 @@
-package com.polariodvoid.one_eighty;
+package com.polariodvoid.one_eighty.Controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,4 +1,4 @@
-package com.polariodvoid.one_eighty;
+package com.polariodvoid.one_eighty.Model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

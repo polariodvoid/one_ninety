@@ -3,11 +3,9 @@ package com.polariodvoid.one_eighty;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;
-import com.polariodvoid.one_eighty.Product;
-import javax.swing.text.html.Option;
-import java.util.Optional;
+import com.polariodvoid.one_eighty.Model.Product;
+
 @Repository
 public interface ProductRepository {
 

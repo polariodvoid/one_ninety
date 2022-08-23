@@ -1,6 +1,5 @@
 package com.polariodvoid.one_eighty.shoppingcart;
 
-import com.polariodvoid.one_eighty.CartItem;
 import com.polariodvoid.one_eighty.CartItemRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

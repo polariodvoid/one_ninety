@@ -2,6 +2,10 @@ package com.polariodvoid.one_eighty;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
+
+import com.polariodvoid.one_eighty.Model.Role;
+import com.polariodvoid.one_eighty.Model.User;
+import com.polariodvoid.one_eighty.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 @Service
 
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 

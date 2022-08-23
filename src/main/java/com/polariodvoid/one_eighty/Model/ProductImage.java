@@ -1,10 +1,13 @@
-package com.polariodvoid.one_eighty;
+package com.polariodvoid.one_eighty.Model;
+
+import com.polariodvoid.one_eighty.Constants;
+import com.polariodvoid.one_eighty.IdBasedEntity;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "product_images")
-public class ProductImage extends IdBasedEntity{
+public class ProductImage extends IdBasedEntity {
     @Column(nullable = false)
     private String name;
 

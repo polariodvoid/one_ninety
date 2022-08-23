@@ -1,7 +1,8 @@
-package com.polariodvoid.one_eighty;
+package com.polariodvoid.one_eighty.Controller;
 
-import com.polariodvoid.one_eighty.Exceptions.CategoryNotFoundException;
-import com.polariodvoid.one_eighty.Exceptions.ProductNotFoundException;
+import com.polariodvoid.one_eighty.ControllerHelper;
+import com.polariodvoid.one_eighty.Model.Product;
+import com.polariodvoid.one_eighty.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -9,13 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import com.polariodvoid.one_eighty.ControllerHelper;
-import com.polariodvoid.one_eighty.User;
-import com.polariodvoid.one_eighty.Product;
-import com.polariodvoid.one_eighty.Exceptions.ProductNotFoundException;
 
 @Controller
 public class ProductController {

@@ -1,7 +1,10 @@
-package com.polariodvoid.one_eighty;
+package com.polariodvoid.one_eighty.Controller;
 
 import com.polariodvoid.one_eighty.Exceptions.UserNotFoundException;
-import org.aspectj.apache.bcel.classfile.Utility;
+import com.polariodvoid.one_eighty.Model.User;
+import com.polariodvoid.one_eighty.Service.ShoppingCartService;
+import com.polariodvoid.one_eighty.Service.UserService;
+import com.polariodvoid.one_eighty.ShoppingCartException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
