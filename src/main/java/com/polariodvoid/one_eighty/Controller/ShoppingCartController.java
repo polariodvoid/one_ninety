@@ -29,6 +29,6 @@ public class ShoppingCartController {
             estimatedTotal += item.getSubtotal();
         }
 
-        return "cart/shopping_cart";
+        return "shopping_cart";
     }
 }

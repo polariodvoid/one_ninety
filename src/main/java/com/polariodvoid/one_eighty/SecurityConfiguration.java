@@ -24,6 +24,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                         "/js/**",
                         "/css/**",
                         "/img/**",
+                        "/cart/**",
                         "/webjars/**").permitAll()
                 .anyRequest().permitAll()
                 .and()
@@ -37,6 +38,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout")
                 .permitAll();
+        //
+        // http .csrf().disable() .authorizeRequests() .anyRequest().permitAll();
+        http.csrf().disable();
     }
 
     @Bean
