@@ -9,6 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.polariodvoid.one_eighty.Model.Product;
 
+import java.util.List;
+
 @Service
 
 public class ProductService {
@@ -41,9 +43,8 @@ public class ProductService {
         return product;
     }
 
-    public Page<Product> search(String keyword, int pageNum) {
-        Pageable pageable = PageRequest.of(pageNum - 1, SEARCH_RESULTS_PER_PAGE);
-        return productRepository.search(keyword, pageable);
+    public List<Product> search(String keyword) {
+        return productRepository.search(keyword);
 
     }
 }

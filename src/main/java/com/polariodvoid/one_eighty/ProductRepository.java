@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import com.polariodvoid.one_eighty.Model.Product;
 
+import java.util.List;
+
 @Repository
 public interface ProductRepository extends CrudRepository<Product,Integer> {
 
@@ -19,10 +21,8 @@ public interface ProductRepository extends CrudRepository<Product,Integer> {
 
     public Product findByAlias(String alias);
 
-    //public Product findById(Integer id);
-
     @Query(value = "SELECT * FROM products WHERE enabled = true AND "
             + "MATCH(name, short_description, full_description) AGAINST (?1)",
             nativeQuery = true)
-    public Page<Product> search(String keyword, Pageable pageable);
+    public List<Product> search(String keyword);
 }
