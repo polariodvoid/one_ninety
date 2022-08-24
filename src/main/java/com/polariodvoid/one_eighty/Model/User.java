@@ -24,6 +24,9 @@ public class User extends IdBasedEntity {
     public User() {
     }
 
+    // constructor added to be used to test the cartItem controller
+    public User(Integer id){ this.id = id;}
+
     public User(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
