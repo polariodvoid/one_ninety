@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-
+<html xmlns:th="http://www.thymeleaf.org" lang="UTF-8">
+<head th:replace="fragments :: page_head('Selzter','none')"/>
+<title> Selzter </title>
 <head>
   <style>
     .crop{
@@ -12,12 +14,12 @@
       height: 300px;
       margin: 0 0 -300px 0px;
     }
-    /*body { background-image:url('images/starry-dusk.gif'); background-repeat:repeat; }*/
+    /*body { background-image:url("../static/Images/starry-dusk.gif"); background-repeat:repeat; }*/
 
   </style>
 
 
-  <link rel="stylesheet" href="../css/index.css" />
+  <link rel="stylesheet" href="../CSS/index.css" />
 
 
 
@@ -25,34 +27,44 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Index</title>
+  </html>
 </head>
-<body Style="background-color:#827055"; >
-<p>This is great</p>
-<!--<div class="menu-container">-->
-<!--  <div class="menu">-->
-<!--    <div class='logo'><img src="https://www.tagsmaker.com/upload/www.tagsmaker.com_n70ku.png"-->
-<!--                           width="200"-->
-<!--                           height="200"/></div>-->
-<!--    <div class="links">-->
-<!--      <nav>-->
-<!--        <a href="index.html"><p>Home</p></a>-->
-<!--        <a href="login.html"><p>Login</p></a>-->
-<!--        <a href="register.html"><p>Registration</p></a>-->
-<!--      </nav>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-<!--<div class='header-container'>-->
-<!--  <div class='header'>-->
-<!--    <div class='subscribe'>Subscribe &#9662;</div>-->
+<div Style="background-color:#827055">
+<!--{&#45;&#45;background-image:url("../static/Images/starry-dusk.gif"); background-repeat:repeat;&#45;&#45;}-->
 
-<!--    <div class='social'><img src="../images/2959740_bird_news_tweet_twitter_icon.png"/>-->
-<!--      <img src="../images/2959749_facebook_icon.png"/>-->
-<!--      <img src="../images/3463479_media_network_snapchat_social_icon.png"/>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+<p>This is great</p>
+<div class="menu-container">
+  <div class="menu">
+    <div class='logo'>
+      <img src="../Images/www.tagsmaker.com_lr541.png" alt="Seltzer Logo"
+                           width="200"
+                           height="200"/>
+    <div>
+    <div class="links">
+      <nav>
+        <a th:href="@{/}"><p>Home</p></a>
+        <a th:href="@{/login}"><p>Login</p></a>
+        <a th:href="@{/registration}"><p>Registration</p></a>
+
+        <a th:href="@{/listings.html}"><p>Shop</p></a>
+
+        <a th:href="@{/shopping_cart.html}"><p>Cart</p></a>
+
+      </nav>
+    </div>
+  </div>
+</div>
+<div class='header-container'>
+  <div class='header'>
+    <div class='subscribe'>Subscribe &#9662;</div>
+
+    <div class='social'>
+      <img src="../Images/2959740_bird_news_tweet_twitter_icon.png" alt="Twitter Logo"/>
+      <img src="../Images/2959749_facebook_icon.png" alt="Facebook aka Meta logo"/>
+      <img src="../Images/3463479_media_network_snapchat_social_icon.png" alt="Snapchat Logo"/>
+    </div>
+  </div>
+</div>
 <!--<div class='photo-grid-container'>-->
 <!--  <div class='photo-grid'>-->
 <!--    <div class='photo-grid-item first-item'>-->
@@ -104,3 +116,7 @@
 
 <!--&lt;!&ndash;<script src="app.js"></script>&ndash;&gt;-->
 <!--</body>-->
+</div>
+</div>
+</div>
+
