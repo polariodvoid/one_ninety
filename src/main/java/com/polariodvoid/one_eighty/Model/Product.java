@@ -165,7 +165,7 @@ public class Product extends IdBasedEntity {
     public String getMainImagePath() {
         return Constants.LOCAL_BASE_URI + this.mainImage;
     }
-
+//this is it!!!
     public List<ProductDetail> getDetails() {
         return details;
     }

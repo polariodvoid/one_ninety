@@ -39,8 +39,8 @@ public class ShoppingCartRestController {
 
     private User getAuthenticatedUser(HttpServletRequest request)
             throws UserNotFoundException {
-        // String email = request.getQueryString(); //email
-        String email = "abcd@gmail.com";
+        String email = request.getQueryString(); //email
+        //String email = "abcd@gmail.com";
         return userService.findByEmail(email);
     }
 

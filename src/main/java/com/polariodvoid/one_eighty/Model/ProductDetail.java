@@ -4,6 +4,7 @@ import com.polariodvoid.one_eighty.IdBasedEntity;
 import com.polariodvoid.one_eighty.Model.Product;
 
 import javax.persistence.*;
+import java.util.*;
 
 @Entity
 @Table(name = "product_details")

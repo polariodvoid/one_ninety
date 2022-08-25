@@ -1,5 +1,3 @@
-decimalSeparator = decimalPointType == 'COMMA' ? ',' : '.';
-thousandsSeparator = thousandsPointType == 'COMMA' ? ',' : '.'; 
 
 $(document).ready(function() {
 	$(".linkMinus").on("click", function(evt) {
