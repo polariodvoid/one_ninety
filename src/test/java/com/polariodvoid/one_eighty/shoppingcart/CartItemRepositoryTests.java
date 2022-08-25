@@ -84,24 +84,24 @@ public class CartItemRepositoryTests {
         assertThat(cartItem.getQuantity()).isEqualTo(5);
     }
 
-    @Test
-    public void testDeleteCartItemByUserAndProduct() {
-        Product product = productRepository.save(getProduct());
-        User user = userRepository.save(getUser());
-
-        CartItem item = new CartItem();
-        item.setUser(user);
-        item.setProduct(product);
-        item.setQuantity(10);
-
-        cartItemRepository.save(item);
-        CartItem cartItem = cartItemRepository.findByUserAndProduct(user, product);
-        assertThat(cartItem).isNotNull();
-
-        cartItemRepository.deleteByUserAndProduct(user.getId(), product.getId());
-        cartItem = cartItemRepository.findByUserAndProduct(user, product);
-        assertThat(cartItem).isNull();
-    }
+//    @Test
+//    public void testDeleteCartItemByUserAndProduct() {
+//        Product product = productRepository.save(getProduct());
+//        User user = userRepository.save(getUser());
+//
+//        CartItem item = new CartItem();
+//        item.setUser(user);
+//        item.setProduct(product);
+//        item.setQuantity(10);
+//
+//        cartItemRepository.save(item);
+//        CartItem cartItem = cartItemRepository.findByUserAndProduct(user, product);
+//        assertThat(cartItem).isNotNull();
+//
+//        cartItemRepository.deleteByUserAndProduct(user.getId(), product.getId());
+//        cartItem = cartItemRepository.findByUserAndProduct(user, product);
+//        assertThat(cartItem).isNull();
+//    }
 
     @Test
     public void testDeleteCartByUser() {
